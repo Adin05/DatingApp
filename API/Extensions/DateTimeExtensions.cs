@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Extensions
 {
-    public static class DateTimeExtentions
+    public static class DateTimeExtensions
     {
         public static int CalculateAge(this DateTime dob){
             var today = DateTime.Today;
