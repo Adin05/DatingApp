@@ -6,17 +6,18 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220715025759_MessageEntityAdd")]
-    partial class MessageEntityAdd
+    [Migration("20221109225759_update type message deleted")]
+    partial class updatetypemessagedeleted
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
@@ -83,19 +84,25 @@ namespace API.Data.Migrations
                     b.Property<DateTime>("MessageSent")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("RecipientDeleted")
+                    b.Property<bool>("RecipientDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("RecipientId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("RecipientId")
+                    b.Property<int?>("RecipientId1")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RecipientUsername")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("SenderDeleted")
+                    b.Property<bool>("SenderDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SenderId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("SenderId")
+                    b.Property<int?>("SenderId1")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SenderUsername")
@@ -103,9 +110,9 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipientId");
+                    b.HasIndex("RecipientId1");
 
-                    b.HasIndex("SenderId");
+                    b.HasIndex("SenderId1");
 
                     b.ToTable("Messages");
                 });
@@ -154,12 +161,12 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.AppUser", "Recipient")
                         .WithMany("MessagesReceived")
-                        .HasForeignKey("RecipientId")
+                        .HasForeignKey("RecipientId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("API.Entities.AppUser", "Sender")
                         .WithMany("MessagesSent")
-                        .HasForeignKey("SenderId")
+                        .HasForeignKey("SenderId1")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Recipient");
