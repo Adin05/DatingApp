@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
 {
-    public static class AppilcationServiceExtensions
+    public static class ApplicationServiceExtensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
@@ -24,6 +24,7 @@ namespace API.Extensions
             services.AddScoped<LogUserActivity>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            services.AddSignalR();
 
             services.AddDbContext<DataContext>(options =>
             {

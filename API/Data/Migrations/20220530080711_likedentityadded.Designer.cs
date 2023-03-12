@@ -10,7 +10,7 @@ namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20220530080711_likedentityadded")]
-    partial class likedentityadded
+    partial class LikeIdentityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

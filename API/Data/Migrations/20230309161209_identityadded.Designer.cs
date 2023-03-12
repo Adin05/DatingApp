@@ -12,7 +12,7 @@ namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20230309161209_identityadded")]
-    partial class identityadded
+    partial class IdentityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

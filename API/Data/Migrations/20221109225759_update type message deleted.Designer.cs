@@ -12,7 +12,7 @@ namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20221109225759_update type message deleted")]
-    partial class updatetypemessagedeleted
+    partial class UpdateTypeMessageDeleted
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
