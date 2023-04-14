@@ -7,7 +7,7 @@
       *ngIf="(messageService.messageThreads$ | async)?.length > 0"
       class="chat"
     >
-      <ul>
+      <ul #scrollMe style="overflow: scroll; height: 500px;" [scrollTop]="scrollMe.scrollHeight">
         <li *ngFor="let message of messageService.messageThreads$ | async">
           <div>
             <span class="chat-img float-end">

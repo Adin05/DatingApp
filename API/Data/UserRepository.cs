@@ -65,16 +65,16 @@ namespace API.Data
             .SingleOrDefaultAsync(m => m.UserName == username);
         }
 
+        public async Task<string> GetUserGender(string username)
+        {
+           return await _context.Users.Where(m=>m.UserName==username).Select(m=>m.Gender).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
             return await _context.Users
             .Include(m => m.Photos)
             .ToListAsync();
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(AppUser user)
