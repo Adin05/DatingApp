@@ -20,7 +20,7 @@ namespace API.Helpers
             var userId = resultContext.HttpContext.User.GetUserId();
             var ouw = resultContext.HttpContext.RequestServices.GetService<IUnitOfWork>();
             var user = await ouw.UserRepository.GetUserById(userId);
-            user.LastActive = DateTime.Now;
+            user.LastActive = DateTime.UtcNow;
             await ouw.Complete();
         }
     }

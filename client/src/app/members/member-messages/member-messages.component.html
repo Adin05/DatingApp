@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-body">
+  <div class="card-body" #scrollMe style="overflow: scroll; height: 500px;" [scrollTop]="scrollMe.scrollHeight">
     <div *ngIf="(messageService.messageThreads$ | async)?.length === 0">
       No Message
     </div>
@@ -7,7 +7,7 @@
       *ngIf="(messageService.messageThreads$ | async)?.length > 0"
       class="chat"
     >
-      <ul #scrollMe style="overflow: scroll; height: 500px;" [scrollTop]="scrollMe.scrollHeight">
+      <ul >
         <li *ngFor="let message of messageService.messageThreads$ | async">
           <div>
             <span class="chat-img float-end">
@@ -61,11 +61,11 @@
         />
         <div class="input-group-append">
           <button
-            [disabled]="!messageForm.valid"
+            [disabled]="!messageForm.valid || loading"
             class="btn btn-primary"
             type="submit"
           >
-            Send
+            Send <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
           </button>
         </div>
       </div>
